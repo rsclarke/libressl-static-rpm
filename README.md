@@ -10,7 +10,7 @@ Like the OpenSSL offerings for RHEL/CentOS/Fedora, this similarly uses a hobble 
 
 ### How To Hobble
 
-1. Fetch the latest [LibreSSl release](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/).
+1. Fetch the latest [LibreSSL release](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/).
 2. Extract the archive
 3. Copy `hobble-libressl` into the root of LibreSSL and execute.
 
