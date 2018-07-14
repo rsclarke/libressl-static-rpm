@@ -1,0 +1,36 @@
+diff --git a/apps/openssl/ecparam.c b/apps/openssl/ecparam.c
+index b1e52fa..64ab335 100644
+--- a/apps/openssl/ecparam.c
++++ b/apps/openssl/ecparam.c
+@@ -425,11 +425,14 @@ ecparam_main(int argc, char **argv)
+ 			if (!EC_GROUP_get_curve_GFp(group, ec_p, ec_a,
+ 			    ec_b, NULL))
+ 				goto end;
+-		} else {
++		}
++#ifndef OPENSSL_NO_EC2M
++		else {
+ 			if (!EC_GROUP_get_curve_GF2m(group, ec_p, ec_a,
+ 			    ec_b, NULL))
+ 				goto end;
+ 		}
++#endif
+ 
+ 		if ((point = EC_GROUP_get0_generator(group)) == NULL)
+ 			goto end;
+@@ -492,11 +495,14 @@ ecparam_main(int argc, char **argv)
+ 			BIO_printf(out, "\tif ((group = EC_GROUP_new_curve_"
+ 			    "GFp(tmp_1, tmp_2, tmp_3, NULL)) == NULL)"
+ 			    "\n\t\tgoto err;\n\n");
+-		} else {
++		}
++#ifndef OPENSSL_NO_EC2M
++		else {
+ 			BIO_printf(out, "\tif ((group = EC_GROUP_new_curve_"
+ 			    "GF2m(tmp_1, tmp_2, tmp_3, NULL)) == NULL)"
+ 			    "\n\t\tgoto err;\n\n");
+ 		}
++#endif
+ 		BIO_printf(out, "\t/* build generator */\n");
+ 		BIO_printf(out, "\tif ((tmp_1 = BN_bin2bn(ec_gen_%d, "
+ 		    "sizeof(ec_gen_%d), tmp_1)) == NULL)"
