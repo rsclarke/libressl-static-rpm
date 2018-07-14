@@ -26,3 +26,16 @@ cp *.patch ~/rpmbuild/SOURCES
 rpmbuild -bs ~/rpmbuild/SPECS/libressl.spec
 mock rebuild ~/rpmbuild/SRPMS/libressl-<version>.<env>.src.rpm
 ```
+
+## COPR / RPM
+
+EL6/7 and Fedora 27/28 RPMs are available on COPR.
+
+[How to enable a COPR repo](https://docs.pagure.org/copr.copr/how_to_enable_repo.html#how-to-enable-repo)
+
+```shell
+dnf copr enable rsclarke/libressl-static
+dnf install libressl-static
+```
+
+Or download the repo file from the [COPR project page](https://copr.fedorainfracloud.org/coprs/rsclarke/libressl-static/).
